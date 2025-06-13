@@ -1,0 +1,8 @@
+.env
+app.yaml
+.gcloudignore
+
+*.run
+config/config.go
+redis.sh
+settings.json
