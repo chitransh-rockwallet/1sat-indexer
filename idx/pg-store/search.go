@@ -21,6 +21,7 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 	} else {
 		sqlBuilder.WriteString(`SELECT logs.member, logs.score FROM logs `)
 	}
+
 	if cfg.FilterSpent {
 		sqlBuilder.WriteString("JOIN txos ON logs.member = txos.outpoint AND txos.spend='' ")
 	}
@@ -62,13 +63,18 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 		sqlBuilder.WriteString("ORDER BY score ASC ")
 	}
 
+	if cfg.Limit > 0 {
+		args = append(args, cfg.Limit)
+		sqlBuilder.WriteString(fmt.Sprintf("LIMIT $%d ", len(args)))
+	}
+
 	sql := sqlBuilder.String()
 	var start time.Time
 	if cfg.Verbose {
 		log.Println(sql, args)
 		start = time.Now()
-
 	}
+
 	if rows, err := p.DB.Query(ctx, sql, args...); err != nil {
 		return nil, err
 	} else {
@@ -186,8 +192,11 @@ func (p *PGStore) SearchBalance(ctx context.Context, cfg *idx.SearchCfg) (balanc
 }
 
 func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*lib.TxResult, err error) {
+	limit := int(cfg.Limit)
 	txMap := make(map[float64]*lib.TxResult)
 	scores := make([]float64, 0, 1000)
+
+	cfg.Limit = 0
 
 	if activity, err := p.Search(ctx, cfg); err != nil {
 		return nil, err
@@ -228,10 +237,11 @@ func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*l
 			}
 		}
 	}
+	
 	slices.Sort(scores)
 	results := make([]*lib.TxResult, 0, cfg.Limit)
 	for index, score := range scores {
-		if index == int(cfg.Limit) {
+		if index == limit {
 			break
 		}
 		results = append(results, txMap[score])
