@@ -3,10 +3,10 @@ package onesat
 import (
 	"encoding/json"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
-	"github.com/chitransh-rockwallet/1sat-indxer/mod/bitcom"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/mod/bitcom"
 )
 
 const ORIGIN_TAG = "origin"

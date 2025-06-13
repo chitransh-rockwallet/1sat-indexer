@@ -3,7 +3,7 @@ package own
 import (
 	"strings"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 	"github.com/gofiber/fiber/v2"
 )
 

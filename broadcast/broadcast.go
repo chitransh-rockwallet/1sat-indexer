@@ -8,9 +8,9 @@ import (
 
 	"github.com/bsv-blockchain/go-sdk/spv"
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 	"github.com/gofiber/fiber/v2"
 )
 

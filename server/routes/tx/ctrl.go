@@ -9,11 +9,11 @@ import (
 	"strings"
 
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/blk"
-	"github.com/chitransh-rockwallet/1sat-indxer/broadcast"
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/broadcast"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
 	"github.com/gofiber/fiber/v2"
 )
 

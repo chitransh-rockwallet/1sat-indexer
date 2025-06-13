@@ -8,9 +8,9 @@ import (
 
 	"github.com/bsv-blockchain/go-sdk/transaction"
 	"github.com/bsv-blockchain/go-sdk/transaction/broadcaster"
-	"github.com/chitransh-rockwallet/1sat-indxer/blk"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
 )
 
 var ctx = context.Background()

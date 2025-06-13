@@ -3,7 +3,7 @@ package pgstore
 import (
 	"context"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 	"github.com/jackc/pgx/v5"
 )
 

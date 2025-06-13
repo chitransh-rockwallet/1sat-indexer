@@ -9,9 +9,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"

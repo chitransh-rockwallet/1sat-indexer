@@ -4,7 +4,7 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/blk"
 	"github.com/gofiber/fiber/v2"
 )
 

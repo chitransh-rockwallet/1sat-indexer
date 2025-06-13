@@ -5,8 +5,8 @@ import (
 	"flag"
 	"log"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/config"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 )
 
 var CONCURRENCY uint

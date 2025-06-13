@@ -15,7 +15,7 @@ import (
 
 	"github.com/GorillaPool/go-junglebus"
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/blk"
 	"github.com/joho/godotenv"
 	"github.com/ordishs/go-bitcoin"
 	"github.com/redis/go-redis/v9"

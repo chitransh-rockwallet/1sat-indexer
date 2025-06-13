@@ -7,9 +7,9 @@ import (
 
 	"github.com/bsv-blockchain/go-sdk/script"
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 const ORDLOCK_TAG = "ordlock"

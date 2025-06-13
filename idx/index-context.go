@@ -9,8 +9,8 @@ import (
 	"github.com/bsv-blockchain/go-sdk/chainhash"
 	"github.com/bsv-blockchain/go-sdk/script"
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 func HeightScore(height uint32, idx uint64) float64 {

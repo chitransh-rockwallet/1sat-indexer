@@ -5,7 +5,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 type ShrugStatus int

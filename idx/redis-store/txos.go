@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
 	"github.com/redis/go-redis/v9"
 	"github.com/vmihailenco/msgpack/v5"
 )

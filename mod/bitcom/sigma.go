@@ -13,7 +13,7 @@ import (
 	"github.com/bsv-blockchain/go-sdk/script"
 	"github.com/bsv-blockchain/go-sdk/transaction"
 	"github.com/bsv-blockchain/go-sdk/util"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 )
 
 var SIGMA_PROTO = "SIGMA"

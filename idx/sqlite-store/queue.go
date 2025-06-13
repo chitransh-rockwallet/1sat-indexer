@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 )
 
 func (s *SQLiteStore) Delog(ctx context.Context, key string, members ...string) error {

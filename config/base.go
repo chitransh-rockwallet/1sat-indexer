@@ -2,8 +2,8 @@ package config
 
 import (
 	"github.com/bsv-blockchain/go-sdk/transaction/broadcaster"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 var Indexers = []idx.Indexer{}

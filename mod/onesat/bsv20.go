@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	bip32 "github.com/bsv-blockchain/go-sdk/compat/bip32"
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 )
 
 type Bsv20Status int

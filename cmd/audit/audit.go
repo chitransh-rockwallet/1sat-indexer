@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/audit"
-	"github.com/chitransh-rockwallet/1sat-indxer/config"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/audit"
+	"github.com/chitransh-rockwallet/1sat-indexer/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 	"github.com/joho/godotenv"
 )
 

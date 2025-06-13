@@ -3,8 +3,8 @@ package idx
 import (
 	"encoding/json"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/evt"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 type IndexData struct {

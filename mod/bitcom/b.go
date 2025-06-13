@@ -4,8 +4,8 @@ import (
 	"crypto/sha256"
 
 	"github.com/bsv-blockchain/go-sdk/script"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 var B_PROTO = "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut"

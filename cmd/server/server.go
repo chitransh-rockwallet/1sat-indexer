@@ -7,9 +7,9 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/config"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/server"
+	"github.com/chitransh-rockwallet/1sat-indexer/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/server"
 	"github.com/joho/godotenv"
 )
 

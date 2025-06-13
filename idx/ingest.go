@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/bsv-blockchain/go-sdk/transaction"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 const PendingTxLog = "tx"

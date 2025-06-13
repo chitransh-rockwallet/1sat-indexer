@@ -8,7 +8,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/bsv-blockchain/go-sdk/script"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 )
 
 var MAP_PROTO = "1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5"

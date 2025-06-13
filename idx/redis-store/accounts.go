@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
 	"github.com/redis/go-redis/v9"
 )
 

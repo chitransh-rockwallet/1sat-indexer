@@ -1,4 +1,4 @@
-module github.com/chitransh-rockwallet/1sat-indxer
+module github.com/chitransh-rockwallet/1sat-indexer
 
 go 1.24.0
 

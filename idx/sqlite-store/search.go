@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
-	"github.com/chitransh-rockwallet/1sat-indxer/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/lib"
 )
 
 func (s *SQLiteStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*idx.Log, err error) {

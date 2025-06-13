@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/chitransh-rockwallet/1sat-indxer/audit"
-	"github.com/chitransh-rockwallet/1sat-indxer/config"
-	"github.com/chitransh-rockwallet/1sat-indxer/idx"
-	"github.com/chitransh-rockwallet/1sat-indxer/jb"
-	"github.com/chitransh-rockwallet/1sat-indxer/server"
+	"github.com/chitransh-rockwallet/1sat-indexer/audit"
+	"github.com/chitransh-rockwallet/1sat-indexer/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/server"
 	"github.com/joho/godotenv"
 	"github.com/redis/go-redis/v9"
 )
