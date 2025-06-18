@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"slices"
 	"strings"
 	"time"
 
@@ -17,9 +16,9 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 	var sqlBuilder strings.Builder
 	args := make([]interface{}, 0, 3)
 	if cfg.ComparisonType == idx.ComparisonAND && len(cfg.Keys) > 1 {
-		sqlBuilder.WriteString(`SELECT logs.member, min(logs.score) as score FROM logs `)
+		sqlBuilder.WriteString(`SELECT logs.member, min(logs.score) AS score FROM logs `)
 	} else {
-		sqlBuilder.WriteString(`SELECT logs.member, logs.score FROM logs `)
+		sqlBuilder.WriteString(`SELECT DISTINCT(logs.score) AS score, logs.member FROM logs `)
 	}
 
 	if cfg.FilterSpent {
@@ -55,6 +54,8 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 		args = append(args, len(cfg.Keys))
 		sqlBuilder.WriteString("GROUP BY logs.member ")
 		sqlBuilder.WriteString(fmt.Sprintf("HAVING COUNT(1) = $%d ", len(args)))
+	} else {
+		sqlBuilder.WriteString("GROUP BY logs.member ")
 	}
 
 	if cfg.Reverse {
@@ -192,11 +193,7 @@ func (p *PGStore) SearchBalance(ctx context.Context, cfg *idx.SearchCfg) (balanc
 }
 
 func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*lib.TxResult, err error) {
-	limit := int(cfg.Limit)
-	txMap := make(map[float64]*lib.TxResult)
-	scores := make([]float64, 0, 1000)
-
-	cfg.Limit = 0
+	results := make([]*lib.TxResult, 0, cfg.Limit)
 
 	if activity, err := p.Search(ctx, cfg); err != nil {
 		return nil, err
@@ -214,38 +211,26 @@ func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*l
 				out = &vout
 			}
 			var result *lib.TxResult
-			var ok bool
-			if result, ok = txMap[item.Score]; !ok {
-				height := uint32(item.Score / 1000000000)
-				result = &lib.TxResult{
-					Txid:    txid,
-					Height:  height,
-					Idx:     uint64(item.Score) % 1000000000,
-					Outputs: lib.NewOutputMap(),
-					Score:   item.Score,
+			height := uint32(item.Score / 1000000000)
+			result = &lib.TxResult{
+				Txid:    txid,
+				Height:  height,
+				Idx:     uint64(item.Score) % 1000000000,
+				Outputs: lib.NewOutputMap(),
+				Score:   item.Score,
+			}
+			results = append(results, result)
+			if cfg.IncludeRawtx {
+				if result.Rawtx, err = jb.LoadRawtx(ctx, txid); err != nil {
+					return nil, err
 				}
-				if cfg.IncludeRawtx {
-					if result.Rawtx, err = jb.LoadRawtx(ctx, txid); err != nil {
-						return nil, err
-					}
-				}
-				txMap[item.Score] = result
-				scores = append(scores, item.Score)
 			}
 			if out != nil {
 				result.Outputs[*out] = struct{}{}
 			}
 		}
 	}
-	
-	slices.Sort(scores)
-	results := make([]*lib.TxResult, 0, cfg.Limit)
-	for index, score := range scores {
-		if index == limit {
-			break
-		}
-		results = append(results, txMap[score])
-	}
+
 	return results, nil
 }
 
