@@ -18,7 +18,7 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 	if cfg.ComparisonType == idx.ComparisonAND && len(cfg.Keys) > 1 {
 		sqlBuilder.WriteString(`SELECT logs.member, min(logs.score) AS score FROM logs `)
 	} else {
-		sqlBuilder.WriteString(`SELECT logs.member, DISTINCT(logs.score) FROM logs `)
+		sqlBuilder.WriteString(`SELECT DISTINCT(logs.score), logs.member FROM logs `)
 	}
 
 	if cfg.FilterSpent {
@@ -86,7 +86,7 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 		results = make([]*idx.Log, 0, cfg.Limit)
 		for rows.Next() {
 			var result idx.Log
-			if err = rows.Scan(&result.Member, &result.Score); err != nil {
+			if err = rows.Scan(&result.Score, &result.Member); err != nil {
 				return nil, err
 			}
 			if cfg.RefreshSpends {
