@@ -23,9 +23,9 @@ type BroadcaseResponse struct {
 	Error   string `json:"error"`
 }
 
-func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transaction, broadcaster transaction.Broadcaster) (response *BroadcastResponse) {
+func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transaction, broadcaster transaction.Broadcaster) (response *BroadcaseResponse) {
 	txid := tx.TxID()
-	response = &BroadcastResponse{
+	response = &BroadcaseResponse{
 		Txid:   txid.String(),
 		Status: 500,
 	}
