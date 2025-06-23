@@ -3,8 +3,8 @@ package idx
 import (
 	"encoding/json"
 
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 )
 
 type IndexData struct {

@@ -8,9 +8,9 @@ import (
 	"strconv"
 
 	"github.com/joho/godotenv"
-	"github.com/shruggr/1sat-indexer/v5/config"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/server"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/server"
 )
 
 var PORT int

@@ -7,12 +7,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/shruggr/1sat-indexer/v5/config"
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	redisstore "github.com/shruggr/1sat-indexer/v5/idx/redis-store"
-	"github.com/shruggr/1sat-indexer/v5/mod/onesat"
-	"github.com/shruggr/1sat-indexer/v5/sub"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	redisstore "github.com/chitransh-rockwallet/1sat-indexer/v5/idx/redis-store"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/mod/onesat"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/sub"
 )
 
 var TAG = "bsv21"

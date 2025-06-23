@@ -8,9 +8,9 @@ import (
 
 	"github.com/bitcoin-sv/go-sdk/transaction"
 	"github.com/bitcoin-sv/go-sdk/transaction/broadcaster"
-	"github.com/shruggr/1sat-indexer/v5/blk"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
 )
 
 var ctx = context.Background()

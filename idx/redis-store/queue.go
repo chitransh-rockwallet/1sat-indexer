@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/shruggr/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 )
 
 func (r *RedisStore) Delog(ctx context.Context, key string, members ...string) error {

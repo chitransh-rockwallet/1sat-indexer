@@ -5,7 +5,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/shruggr/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
 )
 
 func SyncAcct(ctx context.Context, tag string, acct string, ing *IngestCtx) error {

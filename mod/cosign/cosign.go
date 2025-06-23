@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 
 	"github.com/bitcoin-sv/go-sdk/script"
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 )
 
 const COSIGN_TAG = "cosign"

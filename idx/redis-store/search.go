@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/jb"
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 	"github.com/vmihailenco/msgpack/v5"
 )
 

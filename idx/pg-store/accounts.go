@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/shruggr/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 )
 
 func (p *PGStore) AcctsByOwners(ctx context.Context, owners []string) ([]string, error) {

@@ -5,9 +5,9 @@ import (
 	"flag"
 	"log"
 
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/mod/onesat"
-	"github.com/shruggr/1sat-indexer/v5/sub"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/mod/onesat"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/sub"
 )
 
 var POSTGRES string

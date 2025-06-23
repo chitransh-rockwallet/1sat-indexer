@@ -3,7 +3,7 @@ package idx
 import (
 	"context"
 
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 )
 
 type ComparisonType int

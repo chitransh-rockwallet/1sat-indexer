@@ -7,9 +7,9 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 )
 
 const LOCK_TAG = "lock"

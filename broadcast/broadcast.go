@@ -9,9 +9,9 @@ import (
 	"github.com/bitcoin-sv/go-sdk/spv"
 	"github.com/bitcoin-sv/go-sdk/transaction"
 	"github.com/gofiber/fiber/v2"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/jb"
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 )
 
 const MIN_SAT_PER_KB = 1.0

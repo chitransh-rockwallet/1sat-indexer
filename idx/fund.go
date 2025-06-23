@@ -10,9 +10,9 @@ import (
 	"github.com/bitcoin-sv/go-sdk/transaction"
 	feemodel "github.com/bitcoin-sv/go-sdk/transaction/fee_model"
 	"github.com/bitcoin-sv/go-sdk/transaction/template/p2pkh"
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/jb"
-	"github.com/shruggr/1sat-indexer/v5/lib"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/lib"
 )
 
 const SATS_PER_KB = uint64(10)

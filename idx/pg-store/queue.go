@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5"
-	"github.com/shruggr/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 )
 
 func (p *PGStore) Delog(ctx context.Context, key string, members ...string) error {

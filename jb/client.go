@@ -18,7 +18,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/ordishs/go-bitcoin"
 	"github.com/redis/go-redis/v9"
-	"github.com/shruggr/1sat-indexer/v5/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/blk"
 )
 
 var JUNGLEBUS string

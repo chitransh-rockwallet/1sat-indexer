@@ -7,9 +7,9 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/shruggr/1sat-indexer/v5/audit"
-	"github.com/shruggr/1sat-indexer/v5/config"
-	"github.com/shruggr/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/audit"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/config"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 )
 
 func init() {

@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/shruggr/1sat-indexer/v5/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/blk"
 )
 
 func RegisterRoutes(r fiber.Router) {

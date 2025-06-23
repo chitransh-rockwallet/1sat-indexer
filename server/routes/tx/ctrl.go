@@ -10,11 +10,11 @@ import (
 
 	"github.com/bitcoin-sv/go-sdk/transaction"
 	"github.com/gofiber/fiber/v2"
-	"github.com/shruggr/1sat-indexer/v5/blk"
-	"github.com/shruggr/1sat-indexer/v5/broadcast"
-	"github.com/shruggr/1sat-indexer/v5/evt"
-	"github.com/shruggr/1sat-indexer/v5/idx"
-	"github.com/shruggr/1sat-indexer/v5/jb"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/blk"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/broadcast"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
 )
 
 var ingest *idx.IngestCtx
