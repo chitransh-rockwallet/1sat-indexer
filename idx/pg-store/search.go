@@ -1,4 +1,4 @@
-ipackage pgstore
+package pgstore
 
 import (
 	"context"
