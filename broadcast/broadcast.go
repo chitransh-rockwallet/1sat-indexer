@@ -23,9 +23,9 @@ type BroadcaseResponse struct {
 	Error   string `json:"error"`
 }
 
-func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transaction, broadcaster transaction.Broadcaster) (response *BroadcaseResponse) {
+func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transaction, broadcaster transaction.Broadcaster) (response *BroadcastResponse) {
 	txid := tx.TxID()
-	response = &BroadcaseResponse{
+	response = &BroadcastResponse{
 		Txid:   txid.String(),
 		Status: 500,
 	}
@@ -52,34 +52,44 @@ func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transact
 
 	log.Println("Load Spends", response.Txid)
 	rawtx := tx.Bytes()
+
+	fmt.Printf("RawTx :: %v\n", rawtx)
+
 	if fees, err := tx.GetFee(); err != nil {
 		response.Error = err.Error()
+		fmt.Printf("Error 1")
 		return
 	} else {
 		feeRate := float64(fees) / (float64(len(rawtx)) / 1024.0)
 		if feeRate < MIN_SAT_PER_KB {
 			response.Status = fiber.StatusPaymentRequired
 			response.Error = "fee-too-low"
+			fmt.Printf("Error 2")
 			return
 		}
 	}
 	score := idx.HeightScore(0, 0)
+	fmt.Printf("Error 3")
 
 	// TODO: Verify Fees
 	// Verify Transaction locally
 	if valid, err := spv.VerifyScripts(tx); err != nil {
 		response.Error = err.Error()
+		fmt.Printf("Error 4")
 		return
 	} else if !valid {
 		response.Status = 400
 		response.Error = fmt.Sprintf("validation-failed: %s", txid)
+		fmt.Printf("Error 5")
 		return
 	} else if err := jb.Cache.Set(ctx, jb.TxKey(response.Txid), tx.Bytes(), 0).Err(); err != nil { //
 		response.Error = err.Error()
+		fmt.Printf("Error 6")
 		return
 		// Log Transaction Status as pending
 	} else if err = store.Log(ctx, idx.PendingTxLog, response.Txid, -score); err != nil {
 		response.Error = err.Error()
+		fmt.Printf("Error 7")
 		return
 	}
 
@@ -89,16 +99,19 @@ func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transact
 		if added, err := store.SetNewSpend(ctx, spendOutpoint, response.Txid); err != nil {
 			rollbackSpends(ctx, store, spendOutpoints[:vin], response.Txid)
 			response.Error = err.Error()
+			fmt.Printf("Error 8")
 			return
 		} else if !added {
 			if spend, err := store.GetSpend(ctx, spendOutpoint, false); err != nil {
 				rollbackSpends(ctx, store, spendOutpoints[:vin], response.Txid)
 				response.Error = err.Error()
+				fmt.Printf("Error 9")
 				return
 			} else if spend != response.Txid {
 				rollbackSpends(ctx, store, spendOutpoints[:vin], response.Txid)
 				response.Status = 409
 				response.Error = fmt.Sprintf("double-spend: %s:%d - %s spent in %s", response.Txid, vin, spendOutpoint, spend)
+			fmt.Printf("Error 10")
 				return
 			}
 		}
@@ -110,6 +123,7 @@ func Broadcast(ctx context.Context, store idx.TxoStore, tx *transaction.Transact
 			response.Status = uint32(status)
 		}
 		response.Error = failure.Description
+		fmt.Printf("Error 11")
 		return
 	} else {
 		store.Log(ctx, idx.PendingTxLog, response.Txid, score)
