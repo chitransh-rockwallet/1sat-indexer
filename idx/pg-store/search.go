@@ -17,7 +17,7 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 	args := make([]interface{}, 0, 3)
 	if cfg.ComparisonType == idx.ComparisonAND && len(cfg.Keys) > 1 {
 		// this change is for UTXO API
-		sqlBuilder.WriteString(`SELECT min(logs.score) as score, logs.member FROM logs`)
+		sqlBuilder.WriteString(`SELECT min(logs.score) as score, logs.member FROM logs `)
 	} else {
 		sqlBuilder.WriteString(`SELECT DISTINCT(logs.score), logs.member FROM logs `)
 	}
