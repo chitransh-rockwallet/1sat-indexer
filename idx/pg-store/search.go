@@ -1,4 +1,4 @@
-package pgstore
+ipackage pgstore
 
 import (
 	"context"
@@ -17,9 +17,10 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 	var sqlBuilder strings.Builder
 	args := make([]interface{}, 0, 3)
 	if cfg.ComparisonType == idx.ComparisonAND && len(cfg.Keys) > 1 {
-		sqlBuilder.WriteString(`SELECT logs.member, min(logs.score) as score FROM logs `)
+		// this change is for UTXO API
+		sqlBuilder.WriteString(`SELECT min(logs.score) as score, logs.member FROM logs`)
 	} else {
-		sqlBuilder.WriteString(`SELECT logs.member, logs.score FROM logs `)
+		sqlBuilder.WriteString(`SELECT DISTINCT(logs.score), logs.member FROM logs `)
 	}
 	if cfg.FilterSpent {
 		sqlBuilder.WriteString("JOIN txos ON logs.member = txos.outpoint AND txos.spend='' ")
@@ -54,6 +55,8 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 		args = append(args, len(cfg.Keys))
 		sqlBuilder.WriteString("GROUP BY logs.member ")
 		sqlBuilder.WriteString(fmt.Sprintf("HAVING COUNT(1) = $%d ", len(args)))
+	} else {
+		sqlBuilder.WriteString("GROUP BY logs.score, logs.member")
 	}
 
 	if cfg.Reverse {
@@ -84,7 +87,7 @@ func (p *PGStore) Search(ctx context.Context, cfg *idx.SearchCfg) (results []*id
 		results = make([]*idx.Log, 0, cfg.Limit)
 		for rows.Next() {
 			var result idx.Log
-			if err = rows.Scan(&result.Member, &result.Score); err != nil {
+			if err = rows.Scan(&result.Score, &result.Member); err != nil {
 				return nil, err
 			}
 			if cfg.RefreshSpends {
@@ -191,9 +194,7 @@ func (p *PGStore) SearchBalance(ctx context.Context, cfg *idx.SearchCfg) (balanc
 }
 
 func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*lib.TxResult, err error) {
-	txMap := make(map[float64]*lib.TxResult)
-	scores := make([]float64, 0, 1000)
-
+	results := make([]*lib.TxResult, 0, cfg.Limit)
 	if activity, err := p.Search(ctx, cfg); err != nil {
 		return nil, err
 	} else {
@@ -210,33 +211,24 @@ func (p *PGStore) SearchTxns(ctx context.Context, cfg *idx.SearchCfg) (txns []*l
 				out = &vout
 			}
 			var result *lib.TxResult
-			var ok bool
-			if result, ok = txMap[item.Score]; !ok {
-				height := uint32(item.Score / 1000000000)
-				result = &lib.TxResult{
-					Txid:    txid,
-					Height:  height,
-					Idx:     uint64(item.Score) % 1000000000,
-					Outputs: lib.NewOutputMap(),
-					Score:   item.Score,
+			height := uint32(item.Score / 1000000000)
+			result = &lib.TxResult{
+				Txid:    txid,
+				Height:  height,
+				Idx:     uint64(item.Score) % 1000000000,
+				Outputs: lib.NewOutputMap(),
+				Score:   item.Score,
+			}
+			results = append(results, result)
+			if cfg.IncludeRawtx {
+				if result.Rawtx, err = jb.LoadRawtx(ctx, txid); err != nil {
+					return nil, err
 				}
-				if cfg.IncludeRawtx {
-					if result.Rawtx, err = jb.LoadRawtx(ctx, txid); err != nil {
-						return nil, err
-					}
-				}
-				txMap[item.Score] = result
-				scores = append(scores, item.Score)
 			}
 			if out != nil {
 				result.Outputs[*out] = struct{}{}
 			}
 		}
-	}
-	slices.Sort(scores)
-	results := make([]*lib.TxResult, 0, len(scores))
-	for _, score := range scores {
-		results = append(results, txMap[score])
 	}
 	return results, nil
 }
@@ -264,3 +256,4 @@ func (p *PGStore) CountMembers(ctx context.Context, key string) (count uint64, e
 	}
 	return
 }
+
