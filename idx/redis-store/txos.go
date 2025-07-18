@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/redis/go-redis/v9"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/evt"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/jb"
+	"github.com/redis/go-redis/v9"
 	"github.com/vmihailenco/msgpack/v5"
 )
 
@@ -143,14 +143,14 @@ func (r *RedisStore) LoadData(ctx context.Context, outpoint string, tags []strin
 
 func (r *RedisStore) SaveTxos(idxCtx *idx.IndexContext) (err error) {
 	for _, txo := range idxCtx.Txos {
-		if err := r.saveTxo(idxCtx.Ctx, txo, idxCtx.Height, idxCtx.Idx); err != nil {
+		if err := r.SaveTxo(idxCtx.Ctx, txo, idxCtx.Height, idxCtx.Idx); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func (r *RedisStore) saveTxo(ctx context.Context, txo *idx.Txo, height uint32, blkIdx uint64) (err error) {
+func (r *RedisStore) SaveTxo(ctx context.Context, txo *idx.Txo, height uint32, blkIdx uint64) (err error) {
 	outpoint := txo.Outpoint.String()
 	score := idx.HeightScore(height, blkIdx)
 

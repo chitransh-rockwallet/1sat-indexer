@@ -7,10 +7,10 @@ import (
 	"testing"
 
 	"github.com/bitcoin-sv/go-sdk/transaction"
-	"github.com/gofiber/fiber/v2"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/broadcast"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/config"
 	"github.com/chitransh-rockwallet/1sat-indexer/v5/idx"
+	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 )
 

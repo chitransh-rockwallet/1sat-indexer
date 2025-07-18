@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"strings"
 	"time"
 
 	"github.com/bitcoin-sv/go-sdk/chainhash"
@@ -112,6 +113,13 @@ func (idxCtx *IndexContext) ParseSpends() (err error) {
 func (idxCtx *IndexContext) ParseTxos() (err error) {
 	accSats := uint64(0)
 	for vout, txout := range idxCtx.Tx.Outputs {
+		var tokens []string = strings.Split(txout.LockingScript.ToASM(), " ")
+		if len(tokens) == 2 {
+			if tokens[0] == "OP_RETURN" {
+				continue
+			}
+		}
+
 		outpoint := lib.NewOutpointFromHash(idxCtx.Txid, uint32(vout))
 		txo := &Txo{
 			Outpoint: outpoint,
